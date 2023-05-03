@@ -17,11 +17,18 @@ app_secret = os.environ["APP_SECRET"]
 user_id = os.environ["USER_ID"]
 template_id = os.environ["TEMPLATE_ID"]
 
+def get_date():
+    today_date = datetime.now().strftime('%Y-%m-%d')
+    week_list = ["星期一", "星期二", "星期三", "星期四", "星期五", "星期六", "星期日"]
+    dayOfWeek = datetime.today().weekday()
+    return today_date + " " + week_list[dayOfWeek]
+
+
 
 def get_weather():
     key = '546747845e36409aa64d36372c4eb367'  # 我自己的和风天气key，你最好自己注册一个，免费的
-    location = '101070101'  # 城市代码
-    city = '北京'
+    location = '101050311'  # 城市代码
+    city = '西安'
     address = "https://devapi.qweather.com/v7/weather/3d?"
     params = {
         'location': location,
@@ -30,7 +37,8 @@ def get_weather():
     res = requests.get(address,params)
     jsondata = res.json()['daily']
     todaydata=jsondata[0]
-    return todaydata['textDay'],int(todaydata['tempMax'])
+    return todaydata['textDay'],int(todaydata['humidity']),int(todaydata['tempMax']),int(todaydata['tempMin']),todaydata['windScaleDay']
+
 
 def get_count():
   delta = today - datetime.strptime(start_date, "%Y-%m-%d")
@@ -54,7 +62,17 @@ def get_random_color():
 client = WeChatClient(app_id, app_secret)
 
 wm = WeChatMessage(client)
-wea, temperature = get_weather()
-data = {"weather":{"value":wea},"temperature":{"value":temperature},"love_days":{"value":get_count()},"birthday_left":{"value":get_birthday()},"words":{"value":get_words(), "color":get_random_color()}}
+date = get_date()
+wea, humidity,tempMax,tempMin,windScaleDay = get_weather()
+data = {
+        "date":{"value":date,"color":get_random_color()},
+        "weather":{"value":wea,"color":get_random_color()},
+        "humidity":{"value":humidity,"color":get_random_color()},
+        "tempMax":{"value":tempMax,"color":get_random_color()},
+        "tempMin":{"value":tempMin,"color":get_random_color()},
+        "windScaleDay":{"value":windScaleDay,"color":get_random_color()},
+        "love_days":{"value":get_count(),"color":get_random_color()},
+        "birthday_left":{"value":get_birthday(),"color":get_random_color()},
+        "words":{"value":get_words(), "color":get_random_color()}}
 res = wm.send_template(user_id, template_id, data)
 print(res)
