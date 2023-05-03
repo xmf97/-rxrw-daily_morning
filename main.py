@@ -43,13 +43,9 @@ def get_birthday():
   return (next - today).days
 
 def get_words():
-  words = {
-    "data": {
-        "type": "提醒喝水",
-        "text": "到喝水吃药的时间了，维生素最佳服用时间在下午三点到五点之间，可以和叶黄素同时服用，祝你天天开心，越来越美！"
-            }
-        }
-  return words.json()['data']['text']
+  words =  "到喝水吃药的时间了，维生素最佳服用时间在下午三点到五点之间，可以和叶黄素同时服用，祝你天天开心，越来越美！"
+
+  return words
 
 def get_random_color():
   return "#%06x" % random.randint(0, 0xFFFFFF)
