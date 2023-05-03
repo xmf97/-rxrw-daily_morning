@@ -27,7 +27,7 @@ def get_date():
 
 def get_weather():
     key = '546747845e36409aa64d36372c4eb367'  # 我自己的和风天气key，你最好自己注册一个，免费的
-    location = '101050311'  # 城市代码
+    location = '101110101'  # 城市代码
     city = '西安'
     address = "https://devapi.qweather.com/v7/weather/3d?"
     params = {
