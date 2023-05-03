@@ -30,7 +30,7 @@ def get_weather():
     res = requests.get(address,params)
     jsondata = res.json()['daily']
     todaydata=jsondata[0]
-    return todaydata['textDay'],math.floor(todaydata['tempMax'])
+    return todaydata['textDay'],int(todaydata['tempMax'])
 
 def get_count():
   delta = today - datetime.strptime(start_date, "%Y-%m-%d")
