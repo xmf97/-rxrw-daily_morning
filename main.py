@@ -27,8 +27,8 @@ def get_date():
 
 def get_weather():
     key = '546747845e36409aa64d36372c4eb367'  # 我自己的和风天气key，你最好自己注册一个，免费的
-    location = '101110101'  # 城市代码
-    city = '西安'
+    location = '101180801'  # 城市代码101180801
+    city = '开封'
     address = "https://devapi.qweather.com/v7/weather/3d?"
     params = {
         'location': location,
@@ -51,7 +51,7 @@ def get_birthday():
   return (next - today).days
 
 def get_words():
-  words =  "到喝水吃药的时间了，维生素最佳服用时间在下午三点到五点之间，可以和叶黄素同时服用，祝你天天开心，越来越美！"
+  words =  ""
 
   return words
 
