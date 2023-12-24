@@ -68,7 +68,7 @@ wm = WeChatMessage(client)
 today_date = get_date()
 wea, humidity,tempMax,tempMin,windScaleDay = get_weather()
 data = {
-        "date":{"value":today_date,"color":“#1a4a71”},
+        "date":{"value":today_date,"color":"#1a4a71"},
         "weather":{"value":wea,"color":"#173177"},
         "humidity":{"value":str(humidity) + "%","color":get_random_color()},
         "tempMax":{"value":str(tempMax) + "度","color":get_random_color()},
