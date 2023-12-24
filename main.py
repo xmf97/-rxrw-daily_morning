@@ -55,8 +55,8 @@ def get_birthday():
 def get_words():
 	url = 'http://open.iciba.com/dsapi/'
 	r = requests.get(url)
-    words =  json.loads(r.text)["note"]
-  return words
+	words =  json.loads(r.text)["note"]
+	return words
 
 def get_random_color():
   return "#%06x" % random.randint(0, 0xFFFFFF)
