@@ -27,8 +27,8 @@ def get_date():
 
 def get_weather():
     key = '546747845e36409aa64d36372c4eb367'  # 我自己的和风天气key，你最好自己注册一个，免费的
-    location = '101180801'  # 城市代码101180801
-    city = '开封'
+    location = '101130107'  # 城市代码101180801
+    city = '乌鲁木齐'
     address = "https://devapi.qweather.com/v7/weather/3d?"
     params = {
         'location': location,
