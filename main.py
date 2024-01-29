@@ -46,6 +46,13 @@ def get_count():
   delta = today - datetime.strptime(start_date, "%Y-%m-%d")
   return delta.days
 
+def get_love_count():
+  special_date = datetime.strptime(date_str, '%Y-%m-%d')
+  current_date = datetime.now()
+  days_until_special_date = (current_date - special_date).days
+  return days_until_special_date
+
+
 def get_birthday():
   next = datetime.strptime(str(date.today().year) + "-" + birthday, "%Y-%m-%d")
   if next < datetime.now():
@@ -75,6 +82,7 @@ data = {
         "tempMin":{"value":str(tempMin) + "度","color":get_random_color()},
         "windScaleDay":{"value":str(windScaleDay) + "级","color":get_random_color()},
         "love_days":{"value":get_count(),"color":get_random_color()},
+	"love1_days":{"value":get_love_count(),"color":get_random_color()},
         "birthday_left":{"value":get_birthday(),"color":get_random_color()},
         "words":{"value":get_words(), "color":get_random_color()}}
 res = wm.send_template(user_id, template_id, data)
