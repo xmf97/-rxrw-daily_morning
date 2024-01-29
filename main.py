@@ -10,6 +10,7 @@ import json
 
 today = datetime.now()
 start_date = os.environ['START_DATE']
+start1_date = os.environ['START1_DATE']
 city = os.environ['CITY']
 birthday = os.environ['BIRTHDAY']
 
@@ -47,7 +48,7 @@ def get_count():
   return delta.days
 
 def get_love_count():
-  special_date = datetime.strptime(date_str, '%Y-%m-%d')
+  special_date = datetime.strptime(start1_date, '%Y-%m-%d')
   current_date = datetime.now()
   days_until_special_date = (current_date - special_date).days
   return days_until_special_date
